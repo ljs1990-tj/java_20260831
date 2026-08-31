@@ -3,7 +3,7 @@ package day1;
 public class _1_첫번째실습 {
 	public static void main(String[] args) {
 //		프린트문 자동 완성은 syso(텍스트) + ctrl + space
-		
+		 
 		System.out.println("Hello Java");
 		System.out.println(100); // 숫자
 		System.out.println("100"); // 문자
