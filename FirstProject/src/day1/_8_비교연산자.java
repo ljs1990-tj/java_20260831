@@ -24,6 +24,9 @@ public class _8_비교연산자 {
 		
 		System.out.println(!(num1 > num2)); // false
 		
+		// num1과 num2과 다르냐?
+		System.out.println(num1 != num2); // true
+		
 	}
 
 }
