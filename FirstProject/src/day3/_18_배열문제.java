@@ -34,8 +34,8 @@ public class _18_배열문제 {
 		// ex) [85, 67, 53, 37, 29, 11] => [11, 67, 53, 37, 29, 85]
 		// 중복된 숫자가 있으면 먼저 나온 숫자를 기준으로 하면 됩니다.
 		
-		int maxIndex = 0;
-		int minIndex = 0;
+		int maxIndex = 0; // 가장 큰 숫자의 위치
+		int minIndex = 0; // 가장 작은 숫자의 위치
 		for(int i=1; i<arr.length; i++) {
 			if(arr[maxIndex] < arr[i]) {
 				maxIndex = i;
@@ -44,11 +44,12 @@ public class _18_배열문제 {
 				minIndex = i;
 			}
 		}
+		
 		int temp = arr[maxIndex];
 		arr[maxIndex] = arr[minIndex];
 		arr[minIndex] = temp;
-		
 		System.out.println(Arrays.toString(arr));
+		
 		
 	}
 
