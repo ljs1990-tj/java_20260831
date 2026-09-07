@@ -13,6 +13,7 @@ public class _2_복습문제 {
 		Person park = new Person("박영희", 25, "인천"); // 이름, 나이, 주소
 
 		System.out.println(hong.getName()); // '홍길동' 출력
+		
 		System.out.println(hong.getAge()); // '나이가 등록되지 않았습니다' 출력
 		hong.setAge(35);
 		System.out.println(hong.getAge()); // '35' 출력
