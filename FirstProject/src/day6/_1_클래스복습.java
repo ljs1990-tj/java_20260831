@@ -18,6 +18,9 @@ public class _1_클래스복습 {
 		System.out.println(food1.getInfo());
 		
 //		food2.price = 4000; // private 이므로 접근 불가
+		// set, add, put
+		food2.setPrice(4000);
+		System.out.println(food2.getPrice());
 		
 	}
 }

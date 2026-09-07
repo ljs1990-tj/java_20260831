@@ -62,6 +62,10 @@ public class Food {
 	}
 
 	public void setPrice(int price) {
+		if(price <= 0) {
+			System.out.println("가격은 1원 이상 입력해주세요.");
+			return;
+		}
 		this.price = price;
 	}
 
