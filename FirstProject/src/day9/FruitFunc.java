@@ -18,4 +18,17 @@ public class FruitFunc {
 		
 	}
 	
+	static int nonNegative(String msg) {
+		while(true) {
+			System.out.print(msg);
+			int num = s.nextInt();
+			if(num > 0) {
+				return num;
+			} else {
+				System.out.println("0보다 큰 숫자를 입력해주세요.");
+			}
+		}
+		
+	}
+	
 }

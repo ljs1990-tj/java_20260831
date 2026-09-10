@@ -25,12 +25,10 @@ public class _8_과일가게수정1 {
 				} else {
 					map.put("name", name);
 					
-					System.out.print("가격 : ");
-					int price = s.nextInt();
+					int price = FruitFunc.nonNegative("가격 : ");
 					map.put("price", price);
 					
-					System.out.print("개수 : ");
-					int count = s.nextInt();
+					int count = FruitFunc.nonNegative("개수 : ");
 					map.put("count", count);
 					
 					list.add(map);
@@ -40,8 +38,7 @@ public class _8_과일가게수정1 {
 				String name = s.next();
 				HashMap<String, Object> fruit = FruitFunc.searchFruit(list, name);
 				if(fruit != null) {
-					System.out.print("수정할 가격 입력 : ");
-					int price = s.nextInt();
+					int price = FruitFunc.nonNegative("수정할 가격 입력 : ");
 					fruit.put("price", price);
 				} else {
 					System.out.println("해당 과일 없습니다.");
@@ -53,8 +50,20 @@ public class _8_과일가게수정1 {
 				if(fruit != null) {
 					System.out.println("변경 전 : " + fruit);
 					
-					System.out.print("구매할 과일 개수 : ");
-					int count = s.nextInt();
+//					int count = FruitFunc.nonNegative("구매할 과일 개수 : ");
+//					while((Integer) fruit.get("count") < count) {
+//						count = FruitFunc.nonNegative("구매할 과일 개수 : ");
+//					}
+					
+					int count = 0;
+					do {
+					
+						count = FruitFunc.nonNegative("구매할 과일 개수 : ");
+						if((Integer) fruit.get("count") < count) {
+							System.out.println("현재 남은 과일의 개수는 " + (Integer) fruit.get("count") + " 입니다.");
+						}
+					} while ((Integer) fruit.get("count") < count);
+					
 					fruit.put("count", (Integer) fruit.get("count") - count);
 					
 					System.out.println("변경 후 : " + fruit);
