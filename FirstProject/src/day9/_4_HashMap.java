@@ -1,9 +1,10 @@
 package day9;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class _4_HashMap {
-
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> hong = new HashMap<>();
@@ -27,5 +28,11 @@ public class _4_HashMap {
 		park.put("html", 100);
 		System.out.println(park);
 		
+		
+		ArrayList<HashMap<String, Object>> list = new ArrayList<>();
+		list.add(hong);
+		list.add(kim);
+		list.add(park);
+		System.out.println(list);
 	}
 }
