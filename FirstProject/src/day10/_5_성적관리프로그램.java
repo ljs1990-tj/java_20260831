@@ -14,7 +14,7 @@ public class _5_성적관리프로그램 {
 		
 		System.out.println("======= 성적관리 프로그램 ======");
 		while(true) {
-			System.out.print("[ (1) 성적등록 (2) 미정 (그 외) 종료 ] : ");
+			System.out.print("[ (1) 성적등록 (2) 성적확인 (그 외) 종료 ] : ");
 			int menu = s.nextInt();
 			if(menu == 1) {
 				// 메뉴 1번에 대한 조건
@@ -51,6 +51,25 @@ public class _5_성적관리프로그램 {
 				
 				System.out.println(list);
 				System.out.println(stuNoList);
+			} else if(menu == 2) {
+				// 학번을 입력받아서
+				// 해당 학번이 존재하면 해당 학생의 시험 총점 출력
+				// 해당 학번 없으면 '학번을 확인해주세요' 출력 후 메뉴로 이동
+				System.out.print("학번 : ");
+				String stuNo = s.next();
+				int index = stuNoList.indexOf(stuNo);
+				if(index != -1) {
+					HashMap<String, Object> student =  list.get(index);
+					int total = 
+							(Integer) student.get("java") + 
+							(Integer) student.get("db") + 
+							(Integer) student.get("html");
+					
+					System.out.println("총점 : " + total);
+				} else {
+					System.out.println("학번을 확인해주세요");
+				}
+				
 			}
 		}
 	}
