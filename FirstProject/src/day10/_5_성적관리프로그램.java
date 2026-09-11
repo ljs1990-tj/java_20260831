@@ -20,24 +20,35 @@ public class _5_성적관리프로그램 {
 				// 메뉴 1번에 대한 조건
 				// 1. 학번은 무조건 4글자. 4글자 벗어나게 입력하면 다시 입력하도록
 				// 2. 이미 있는 학번이라면 마찬가지로 다시 입력하도록
-				// 3.
+				// 3. 각 과목의 점수를 입력받을 때 점수의 범위는
+				//    자바 : 0~40, db : 0~35, html : 0~25
+				//    해당 범위 외의 숫자 입력 시 다시 입력하도록
+				
 				HashMap<String, Object> student = new HashMap<>();
-				String stuNo = MyFunction.textLength("학번 : ", 4);
-				student.put("stuNo", stuNo);
+				while(true) {
+					String stuNo = MyFunction.textLength("학번 : ", 4);
+					if(stuNoList.indexOf(stuNo) != -1) {
+						System.out.println("이미 등록된 학번 입니다.");
+					} else {
+						student.put("stuNo", stuNo);
+						break;
+					}
+				}
 				
 				System.out.print("이름 : ");
 				String name = s.next();
 				student.put("name", name);
 				
-				System.out.print("자바점수 : ");
-				int javaScore = s.nextInt();
-				System.out.print("db점수 : ");
-				int dbScore = s.nextInt();
-				System.out.print("html점수 : ");
-				int htmlScore = s.nextInt();
+//				System.out.print("자바점수 : ");
+//				int javaScore = s.nextInt();
+//				System.out.print("db점수 : ");
+//				int dbScore = s.nextInt();
+//				System.out.print("html점수 : ");
+//				int htmlScore = s.nextInt();
 				
 				list.add(student);
-				stuNoList.add(stuNo);
+				stuNoList.add((String) student.get("stuNo"));
+				
 				System.out.println(list);
 				System.out.println(stuNoList);
 			}
