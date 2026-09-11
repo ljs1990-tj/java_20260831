@@ -39,12 +39,12 @@ public class _5_성적관리프로그램 {
 				String name = s.next();
 				student.put("name", name);
 				
-//				System.out.print("자바점수 : ");
-//				int javaScore = s.nextInt();
-//				System.out.print("db점수 : ");
-//				int dbScore = s.nextInt();
-//				System.out.print("html점수 : ");
-//				int htmlScore = s.nextInt();
+				int javaScore = MyFunction.numberCheck("자바점수 : ", 0, 40);
+				student.put("java", javaScore);
+				int dbScore = MyFunction.numberCheck("db점수 : ", 0, 35);
+				student.put("db", dbScore);
+				int htmlScore = MyFunction.numberCheck("html점수 : ", 0, 25);
+				student.put("html", htmlScore);
 				
 				list.add(student);
 				stuNoList.add((String) student.get("stuNo"));

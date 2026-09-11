@@ -17,4 +17,16 @@ public class MyFunction {
 			}
 		}
 	} 
+	
+	static int numberCheck(String msg, int min, int max) {
+		while(true) {
+			System.out.print(msg);
+			int input = s.nextInt();
+			if(input >= min && input <= max) {
+				return input;
+			} else {
+				System.out.println("숫자의 범위는 " + min + "~" + max + " 입니다.");
+			}
+		}
+	}
 }
