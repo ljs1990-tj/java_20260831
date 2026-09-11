@@ -1,6 +1,7 @@
 package day10;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -14,7 +15,7 @@ public class _5_성적관리프로그램 {
 		
 		System.out.println("======= 성적관리 프로그램 ======");
 		while(true) {
-			System.out.print("[ (1) 성적등록 (2) 성적확인 (그 외) 종료 ] : ");
+			System.out.print("[ (1) 성적등록 (2) 성적확인 (3) 성적순위 (그 외) 종료 ] : ");
 			int menu = s.nextInt();
 			if(menu == 1) {
 				// 메뉴 1번에 대한 조건
@@ -70,6 +71,44 @@ public class _5_성적관리프로그램 {
 					System.out.println("학번을 확인해주세요");
 				}
 				
+			} else if(menu == 3) {
+				// 메뉴에 들어오면 학생들 전체 등수 출력
+				// 리스트에 5명 있으면 
+				// 1등 : ooo(학번), oo점(총점)
+				// 2등 : ooo(학번), oo점(총점)
+				// ...
+				// 5등 : ooo(학번), oo점(총점)
+				int scoreArr[] = new int[list.size()];
+				String stuNoArr[] = new String[list.size()];
+				
+				for(int i=0; i<list.size(); i++) {
+					HashMap<String, Object> student = list.get(i);
+					scoreArr[i] = 
+							(Integer) student.get("java") + 
+							(Integer) student.get("db") + 
+							(Integer) student.get("html"); 
+					stuNoArr[i] = (String) student.get("stuNo");
+				}
+				
+				for(int i=0; i<scoreArr.length; i++) {
+					int maxIndex = i;
+					for(int j=i+1; j<scoreArr.length; j++) {
+						if(scoreArr[maxIndex] < scoreArr[j]) {
+							maxIndex = j;
+						}
+					}
+					int temp = scoreArr[maxIndex];
+					scoreArr[maxIndex] = scoreArr[i];
+					scoreArr[i] = temp;
+					
+					String temp2 = stuNoArr[maxIndex];
+					stuNoArr[maxIndex] = stuNoArr[i];
+					stuNoArr[i] = temp2;
+				}
+				
+				for(int i=0; i<scoreArr.length; i++) {
+					System.out.println((i+1) + "등 : " + stuNoArr[i] + ", " + scoreArr[i] + "점");
+				}
 			}
 		}
 	}
