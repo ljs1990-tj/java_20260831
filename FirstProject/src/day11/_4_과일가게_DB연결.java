@@ -17,7 +17,35 @@ public class _4_과일가게_DB연결 {
 		//    db에 저장
 		// 3. 가격과 개수를 입력받을 때는 0이하의 숫자를 입력할 경우
 		//    경고 후 다시 입력하도록
-		
+		try {
+			System.out.print("과일 이름 : ");
+			String fruitName = "'" + s.next() + "'";
+			String sql = "SELECT * FROM FRUIT WHERE FRUIT_NAME = " + fruitName;
+			ResultSet rs = stmt.executeQuery(sql);
+			if(rs.next()) {
+				System.out.println("이미 존재하는 과일 입니다");
+				return;
+			}
+			
+			int price = MyFunction.nonNegative("가격 : ");
+			int cnt = MyFunction.nonNegative("개수 : ");
+			
+			String insertSql = "INSERT INTO FRUIT VALUES("
+							+ fruitName + ","
+							+ price + ","
+							+ cnt + ")";
+			int result = stmt.executeUpdate(insertSql);
+			if(result > 0) {
+				System.out.println("추가되었습니다!");
+			} else {
+				System.out.println("추가에 실패했습니다.");
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
 		
 	}
 	public static void updateFruit() {
@@ -84,6 +112,37 @@ public class _4_과일가게_DB연결 {
 		}
 	}
 	
+	public static void deleteFruit() {
+		// 과일 이름 입력받아서
+		// '정말 삭제하시겠습니까?(Y or N)' 물어보고 y or Y 입력되면 
+		// db에 삭제 요청
+		// 삭제 성공하면 '삭제되었습니다'
+		// 실패하면 '과일이름을 확인해주세요'
+		try {
+			System.out.print("삭제할 과일 이름 : ");
+			String fruitName = "'" + s.next() + "'";
+			
+			System.out.print("정말 삭제하시겠습니까?(Y or N) : ");
+			String answer = s.next().toUpperCase();
+			
+			if(answer.equals("Y")) {
+				String sql = "DELETE FROM FRUIT WHERE FRUIT_NAME = " + fruitName;
+				int result = stmt.executeUpdate(sql);
+				if(result > 0) {
+					System.out.println("삭제되었습니다!");
+				} else {
+					System.out.println("과일이름을 확인해주세요.");
+				}
+			} else {
+				System.out.println("취소되었습니다.");
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -91,7 +150,7 @@ public class _4_과일가게_DB연결 {
 		try {
 			
 			while(true) {
-				System.out.print("[ (1) 과일 추가 (2) 가격 수정 (3) 판매 (4) 과일 확인 (그 외) 종료 ] : ");
+				System.out.print("[ (1) 과일 추가 (2) 가격 수정 (3) 판매 (4) 과일 확인 (5) 삭제 (그 외) 종료 ] : ");
 				int menu = s.nextInt();
 				
 				switch (menu) {
@@ -106,6 +165,9 @@ public class _4_과일가게_DB연결 {
 					break;
 				case 4:
 					checkFruit();
+					break;
+				case 5:
+					deleteFruit();
 					break;
 				default:
 					System.out.println("종료되었습니다.");
