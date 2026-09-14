@@ -14,9 +14,19 @@ public class _3_업데이트 {
 			// 1. 스캐너로 과일 이름 입력받기
 			// 2. 수정할 가격 입력받아서 수정하기
 			System.out.print("과일 이름 : ");
-			String fruitName = s.next();
+			String fruitName = "'" + s.next() + "'";
 			System.out.print("수정할 가격 : ");
 			int newPrice = s.nextInt();
+			String sql = "UPDATE FRUIT SET"
+						+ " PRICE = " + newPrice
+						+ " WHERE FRUIT_NAME = " + fruitName;
+			
+			int updateCnt = stmt.executeUpdate(sql);
+			if(updateCnt > 0) {
+				System.out.println("수정되었습니다!");
+			} else {
+				System.out.println("없는 과일 입니다.");
+			}
 			
 			
 		} catch (Exception e) {

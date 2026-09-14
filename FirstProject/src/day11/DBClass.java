@@ -16,9 +16,9 @@ public class DBClass {
 	public DBClass() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver"); 
-			String db_url = "jdbc:oracle:thin:@db.ccxwnfpmkcwn.ap-northeast-2.rds.amazonaws.com:1521:orcl";
-			String db_id = "admin"; // SYSTEM
-			String db_pw = "test12#$%"; // test12#$
+			String db_url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String db_id = "SYSTEM"; // SYSTEM
+			String db_pw = "test12#$"; // test12#$
 			conn = DriverManager.getConnection(db_url, db_id, db_pw);
 		    stmt = conn.createStatement();
 		} catch (SQLException e) {
