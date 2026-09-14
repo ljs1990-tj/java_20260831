@@ -11,12 +11,51 @@ public class _4_과일가게_DB연결 {
 	
 	public static void addFruit() {
 		System.out.println("=== 과일 추가 ===");
+		// 1. 과일 이름 입력받아서 있는 과일이면 '이미 존재하는 과일 입니다' 
+		//    출력 후 메뉴로 이동
+		// 2. 없는 과일이면 과일 이름, 가격, 개수를 입력받아서
+		//    db에 저장
+		// 3. 가격과 개수를 입력받을 때는 0이하의 숫자를 입력할 경우
+		//    경고 후 다시 입력하도록
+		
+		
 	}
 	public static void updateFruit() {
 		System.out.println("=== 가격 수정 ===");
 		// 1. 과일 이름 입력받아서 있는 과일이면 현재 가격 출력
 		//    없는 과일이면 '해당 과일 없습니다' 출력 후 메뉴로 이동
 		// 2. 새로운 가격을 입력받아서 해당 가격으로 수정 
+		
+		try {
+			System.out.print("과일 이름 : ");
+			String fruitName = "'" + s.next() + "'";
+			String sql = "SELECT * FROM FRUIT WHERE FRUIT_NAME = " + fruitName;
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			if(rs.next()) {
+				System.out.println("현재 가격은 " + rs.getInt("PRICE") + "원 입니다.");
+				System.out.print("새로운 가격을 입력해주세요 : ");
+				int newPrice = s.nextInt();
+				
+				String updateSql = "UPDATE FRUIT SET"
+								+ " PRICE = " + newPrice
+								+ " WHERE FRUIT_NAME = " + fruitName;
+				int updateCnt = stmt.executeUpdate(updateSql);
+				if(updateCnt > 0) {
+					System.out.println("수정되었습니다!");
+				} else {
+					System.out.println("수정에 실패했습니다.");
+				}
+				
+				
+			} else {
+				System.out.println("해당 과일 없습니다");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+		
 		
 	}
 	public static void sellFruit() {
