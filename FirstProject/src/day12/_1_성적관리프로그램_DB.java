@@ -58,7 +58,7 @@ public class _1_성적관리프로그램_DB {
 		try {
 
 			while (true) {
-				System.out.print("[ (1) 과일 추가 (2) 가격 수정 (3) 판매 (4) 과일 확인 (5) 삭제 (그 외) 종료 ] : ");
+				System.out.print("[ (1) 성적입력 (2) 순위 (3) 성적수정 (4) 삭제 (5) 합격여부 (그 외) 종료 ] : ");
 				int menu = s.nextInt();
 
 				switch (menu) {
