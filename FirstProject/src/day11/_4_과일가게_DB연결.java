@@ -88,6 +88,34 @@ public class _4_과일가게_DB연결 {
 	}
 	public static void sellFruit() {
 		System.out.println("=== 과일 판매 ===");
+		// 1. 판매할 과일 이름 입력 받기
+		//    해당 과일 db에 없으면 없다는 문구 출력 후 메뉴로 이동
+		// 2. 과일이 있을 경우 현재 개수 알려주고 구매할 개수 입력받기
+		// 3. 구매 개수는 1이상, 현재개수보다 작은 숫자 입력받기
+		//    해당 범위 벗어날 경우 안내문구 후 다시 입력하도록 유도
+		// 4. 정상 범위 입력했을 경우 기존 개수에서 차감 후 메뉴로 이동
+		
+		try {
+			System.out.print("과일 이름 : ");
+			String fruitName = "'" + s.next() + "'";
+			String sql = "SELECT * FROM FRUIT WHERE FRUIT_NAME = " + fruitName;
+			ResultSet rs = stmt.executeQuery(sql);
+			if(rs.next()) {
+				int cnt = rs.getInt("CNT");
+				System.out.println("현재 과일은 " + cnt + "개 있습니다.");
+				System.out.print("구매할 개수 : ");
+				int buyCnt = s.nextInt();
+			} else {
+				System.out.println("해당 과일 없습니다.");
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+		
+		
+		
 	}
 	public static void checkFruit() {
 		System.out.println("=== 과일 확인 ===");
