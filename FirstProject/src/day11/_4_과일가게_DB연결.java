@@ -103,8 +103,19 @@ public class _4_과일가게_DB연결 {
 			if(rs.next()) {
 				int cnt = rs.getInt("CNT");
 				System.out.println("현재 과일은 " + cnt + "개 있습니다.");
-				System.out.print("구매할 개수 : ");
-				int buyCnt = s.nextInt();
+//				System.out.print("구매할 개수 : ");
+				int buyCnt = MyFunction.checkNumber("구매할 개수 : ", 1, cnt);
+				
+				String updateSql = "UPDATE FRUIT SET"
+								+ " CNT = " + (cnt - buyCnt)
+								+ " WHERE FRUIT_NAME = " + fruitName;
+				int result = stmt.executeUpdate(updateSql);
+				if(result > 0) {
+					System.out.println("판매되었습니다!");
+				} else {
+					System.out.println("오류가 발생했습니다.");
+				}
+				
 			} else {
 				System.out.println("해당 과일 없습니다.");
 			}
