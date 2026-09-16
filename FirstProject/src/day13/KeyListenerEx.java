@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -36,6 +37,12 @@ public class KeyListenerEx extends JFrame{
 				arr[0].setText(keyCode + "");
 				arr[1].setText(e.getKeyChar() + "");
 				arr[2].setText(e.getKeyText(keyCode));
+				
+				JLabel label = new JLabel("New Text");
+				c.add(label);
+				JButton btn = new JButton("zz");
+				c.add(btn);
+				
 			}
 		});
 		
