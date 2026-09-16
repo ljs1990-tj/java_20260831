@@ -1,8 +1,10 @@
 package day13;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,11 +19,13 @@ public class MouseAdapterEx extends JFrame{
 		JLabel label = new JLabel("Hello");
 		label.setBounds(30, 30, 70, 50);
 		c.add(label);
+		Random ran = new Random();
 		c.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-				label.setLocation(e.getX(), e.getY());;
+				label.setLocation(e.getX(), e.getY());
+				c.setBackground(new Color(ran.nextInt(256), ran.nextInt(256), ran.nextInt(256)));
 			}
 		});
 		
