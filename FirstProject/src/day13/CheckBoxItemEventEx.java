@@ -2,12 +2,15 @@ package day13;
 
 import java.awt.Container;
 import java.awt.FlowLayout;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class CheckBoxItemEventEx extends JFrame{
+	int sum = 0;
 	public CheckBoxItemEventEx() {
 		// TODO Auto-generated constructor stub
 		setTitle("체크박스 이벤트");
@@ -23,6 +26,34 @@ public class CheckBoxItemEventEx extends JFrame{
 		
 		for(int i=0; i<fruits.length; i++) {
 			fruits[i] = new JCheckBox(furitNames[i]);
+			fruits[i].addItemListener(new ItemListener() {
+				@Override
+				public void itemStateChanged(ItemEvent e) {
+					// TODO Auto-generated method stub
+					if(e.getStateChange() == ItemEvent.SELECTED) {
+						// 체크됐을 때 로직 처리
+						System.out.println("체크 됨!");
+						if(e.getItem() == fruits[0]) {
+							sum += 100;
+						} else if(e.getItem() == fruits[1]) {
+							sum += 500;
+						} else {
+							sum += 20000;
+						}
+					} else {
+						// 체크 해제 됐을 때 로직 처리
+						System.out.println("해제 됨!");
+						if(e.getItem() == fruits[0]) {
+							sum -= 100;
+						} else if(e.getItem() == fruits[1]) {
+							sum -= 500;
+						} else {
+							sum -= 20000;
+						}
+					}
+					sumLabel.setText("현재 " + sum + "원입니다.");
+				}
+			});
 			c.add(fruits[i]);
 		}
 		
