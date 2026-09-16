@@ -28,7 +28,6 @@ public class MakeButton extends JFrame{
 					c.add(btn);
 					
 					c.repaint();
-					
 				}
 			}
 		});
