@@ -19,6 +19,7 @@ public class Quiz1 extends JFrame{
 		Container c = getContentPane();
 		c.setLayout(null);
 		c.setBackground(Color.YELLOW);
+		
 		int [] unit = {50000, 10000, 1000, 500, 100, 50, 10, 1}; 
 		String [] text = {"오만원", "만원", "천원", "500원", "100원", "50원", "10원", "1원"}; 
 		
@@ -42,7 +43,7 @@ public class Quiz1 extends JFrame{
 		
 		for(int i=0; i<text.length; i++) {
 			JLabel moneyText = new JLabel(text[i]);
-//			moneyText.setHorizontalAlignment(JLabel.RIGHT);
+			moneyText.setHorizontalAlignment(JLabel.RIGHT);
 			moneyText.setSize(50, 20);
 			moneyText.setLocation(50, 50+i*20);
 			c.add(moneyText);
@@ -61,7 +62,7 @@ public class Quiz1 extends JFrame{
 				if(str.length() == 0) {
 					return;
 				}; 
-				
+//				int [] unit = {50000, 10000, 1000, 500, 100, 50, 10, 1};
 				int money = Integer.parseInt(str); 
 				int res;
 				for(int i=0; i<unit.length; i++) {
