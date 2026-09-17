@@ -4,6 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -30,9 +34,49 @@ public class Quiz3 extends JFrame{
 		
 		JPanel centerPanel = new JPanel();
 		centerPanel.setBackground(Color.CYAN);
-//		centerPanel.add(new JLabel("센터영역!!!"));
-		centerPanel.add(new JButton("버튼1"));
-		centerPanel.add(new JButton("버튼2"));
+		centerPanel.setLayout(new GridLayout(4, 4, 3, 3));
+		String arr[] = {
+				"7", "8", "9", "*",
+				"4", "5", "6", "-",
+				"1", "2", "3", "+",
+				"/", "0", ".", "="
+		};
+		ArrayList<String> list = new ArrayList<>();
+		list.add("*");
+		list.add("-");
+		list.add("+");
+		list.add("/");
+		list.add("=");
+		list.add(".");
+		
+		
+		for(int i=0; i<arr.length; i++) {
+			JButton btn = new JButton(arr[i]);
+			btn.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					JButton b = (JButton) e.getSource();
+					if(inputField.getText().length() == 0 && list.contains(b.getText())) {
+						return;
+					} else if(inputField.getText().length() != 0) {
+						String currentText = inputField.getText();
+						String lastText = currentText.substring(currentText.length()-1);
+						if(list.contains(lastText) && list.contains(b.getText())) {
+							return;
+						}
+					}
+					
+					String inputText = inputField.getText() + b.getText();
+					inputField.setText(inputText);
+					
+				}
+			});
+			
+			centerPanel.add(btn);
+		}
+		
 		c.add(centerPanel, BorderLayout.CENTER);
 		
 		JPanel bottomPanel = new JPanel();
@@ -43,7 +87,7 @@ public class Quiz3 extends JFrame{
 		bottomPanel.add(resultField);
 		c.add(bottomPanel, BorderLayout.SOUTH);
 		
-		setSize(500, 500);
+		setSize(400, 400);
 		setVisible(true);
 	}
 	public static void main(String[] args) {
