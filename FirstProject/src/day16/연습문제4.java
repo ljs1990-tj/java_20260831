@@ -1,6 +1,7 @@
 package day16;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class 연습문제4 {
 
@@ -11,6 +12,18 @@ public class 연습문제4 {
 		// 스캐너를 통해 입력받은 값을 5개 공간 배열에 값 넣기
 		// 값은 10~30 사이 값만 넣기. 
 		// 그 외 값은 다시 입력받기
+		Scanner s = new Scanner(System.in);
+		for(int i=0; i<arr1.length; i++) {
+			System.out.print((i+1) + "번째 숫자 입력 : ");
+			int num = s.nextInt();
+			if(num >= 10 && num <= 30) {
+				arr1[i] = num;
+			} else {
+				System.out.println("10부터 30사이 값 입력하셈");
+				i--;
+			}
+		}
+		
 		
 		int arr2[] = { 3, 9, 6, 5, 4, 2, 15, 8 };
 		// 홀수 먼저 정렬 => 오름차순
@@ -29,16 +42,17 @@ public class 연습문제4 {
 				evenCount++;
 			} else {
 				oddArr[oddCount] = arr2[i];
-				oddCount++;
+				oddCount++; // 4
 			}
 		}
 		
-		Arrays.sort(oddArr);
-		Arrays.sort(evenArr);
+		Arrays.sort(oddArr); // {3,5,9,15}
+		Arrays.sort(evenArr); // {2,4,6,8}
 		
 		for(int i=0; i<oddArr.length; i++) {
 			arr2[i] = oddArr[i];
 		}
+		// {3,5,9,15, 8, 6, 4, 2 }
 		for(int i=oddArr.length; i<arr2.length; i++) {
 			arr2[i] = evenArr[oddCount-1];
 			oddCount--;
