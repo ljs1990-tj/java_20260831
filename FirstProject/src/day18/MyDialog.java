@@ -15,7 +15,7 @@ public class MyDialog extends JDialog{
 	private JButton okButton = new JButton("OK");
 	
 	MyDialog(JFrame frame, String title){
-		super(frame, title);
+		super(frame, title, true);
 		setLayout(new FlowLayout());
 		add(tf);
 		add(okButton);
@@ -29,5 +29,13 @@ public class MyDialog extends JDialog{
 		});
 		
 		setSize(200, 100);
+	}
+	
+	public String getInput() {
+		if(tf.getText().length() == 0) {
+			return null;
+		} else {
+			return tf.getText();
+		}
 	}
 }

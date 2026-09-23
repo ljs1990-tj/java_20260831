@@ -23,6 +23,13 @@ public class DialogEx extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				dialog.setVisible(true);
+				
+				String text = dialog.getInput();
+				if(text == null) {
+					return;
+				}
+				
+				btn.setText(text);
 			}
 		});
 		
